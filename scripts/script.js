@@ -79,7 +79,7 @@ document.getElementById('registrationForm').addEventListener('submit', function 
     };
 
     // Отправка данных на сервер
-    fetch('http://localhost:3000/register', {
+    fetch('https://knyazev-spa.onrender.com/register', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
