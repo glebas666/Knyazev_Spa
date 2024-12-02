@@ -3,7 +3,7 @@ const cors = require('cors'); // Для разрешения CORS
 const path = require('path'); // Для работы с путями
 
 const app = express();
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 10000;
 
 // Разрешаем CORS
 app.use(cors());
