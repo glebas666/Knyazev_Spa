@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Спа-салон</title>
+    <link rel="stylesheet" href="styles/style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css">
+</head>
+</head>
+<body>
+
+   <!-- Боковая панель навигации -->
+<div id="sidebar" class="sidebar">
+    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+    <a href="#about">О салоне</a>
+    <a href="#services">Услуги</a>
+    <a href="#reviews">Отзывы</a>
+    <a href="#contacts">Контакты</a> <!-- Якорная ссылка -->
+</div>
+
+
+    <!-- Верхняя панель навигации -->
+    <header>
+        <div class="navbar">
+            <span class="menu-icon" onclick="openNav()">&#9776;</span>
+            <div class="logo">
+                <img src="images/logo.png" alt="Логотип Спа-салона">
+            </div>
+        </div>
+        <div class="social-icons">
+            <a href="https://www.instagram.com" target="_blank" class="social-icon"><i class="fab fa-instagram"></i></a>
+            <a href="https://t.me" target="_blank" class="social-icon"><i class="fab fa-telegram-plane"></i></a>
+            <a href="https://vk.com/beheritv" target="_blank" class="social-icon"><i class="fab fa-vk"></i></a>
+        </div>
+    </header>
+
+    <!-- Секция слайдера -->
+    <main>
+        <section id="slider" class="slider-container">
+            <div class="slides">
+                <!-- Слайд 1 -->
+<div class="slide">
+    <img src="images/photo1.jpg" alt="Слайд 1">
+    <div class="slider-content">
+        <div class="logo-center">
+            <img src="images/logo.png" alt="Логотип Спа-салона">
+        </div>
+        <div class="motto-center">
+            <h2>Ваш путь к гармонии и релаксации</h2>
+            <p class="quote">"В тишине мы обретаем себя." – Лао Цзы</p>
+        </div>
+    </div>
+</div>
+                <!-- Слайд 2 -->
+                <div class="slide">
+                    <img src="images/photo2.jpg" alt="Слайд 2">
+                    <div class="slider-content">
+                        <div class="logo-center">
+                            <img src="images/logo.png" alt="Логотип Спа-салона">
+                        </div>
+                        <div class="motto-center">
+                            <h2>Не упустите свой шанс на полное восстановление!</h2>
+                            <p class="quote">"Настоящее счастье можно найти только внутри себя." – Буда</p>
+                        </div>
+                        <div class="slider-buttons">
+                            <a href="#booking" class="button" onclick="openRegistrationModal()">Записаться</a>
+                            <a href="#services" class="button">Услуги</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Стрелки и индикаторы -->
+            <button class="prev" onclick="prevSlide()">&#10094;</button>
+            <button class="next" onclick="nextSlide()">&#10095;</button>
+            <div class="indicators">
+                <span onclick="setSlide(0)" class="indicator active"></span>
+                <span onclick="setSlide(1)" class="indicator"></span>
+            </div>
+        </section>
+
+<!-- Кнопка для перехода к регистрации -->
+<button class="button" onclick="openRegistrationModal()">Записаться</button>
+
+
+<!-- Модальное окно регистрации -->
+<div id="registrationModal" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeRegistrationModal()">&times;</span>
+        <h2 style="text-align: center; margin-bottom: 20px;">Регистрация на услугу</h2>
+        <form id="registrationForm">
+            <label for="name">Ваше имя:</label>
+            <input type="text" id="name" name="name" placeholder="Введите ваше имя" required>
+
+            <label for="phone">Телефон:</label>
+            <input type="tel" id="phone" name="phone" placeholder="+7 (XXX) XXX-XX-XX" required>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" placeholder="example@mail.com">
+
+            <button type="submit" class="submit-button">Записаться</button>
+        </form>
+    </div>
+</div>
+    <script>
+        document.getElementById('registrationForm').addEventListener('submit', function(e) {
+          e.preventDefault();
+    
+          const formData = {
+            name: document.getElementById('name').value,
+            phone: document.getElementById('phone').value,
+            email: document.getElementById('email').value,
+          };
+    
+          fetch('http://localhost:3000/register', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(formData)
+          })
+          .then(response => response.text())
+          .then(data => {
+            alert(data);
+          })
+          .catch(error => {
+            alert('Ошибка отправки данных!');
+            console.error('Ошибка:', error);
+          });
+        });
+      </script>
+</div>
+
+
+        <!-- Секция услуг -->
+    <section id="services" class="services-container">
+        <h2>Наши услуги</h2>
+        <div class="services-grid">
+            <!-- Карточка услуги 1 -->
+            <div class="service-card" onclick="openRegistrationModal()">
+                <img src="images/massage.jpg" alt="Массаж">
+                <div class="service-overlay">
+                    <h3>Расслабляющий массаж</h3>
+                    <p>Помогает снять стресс и напряжение, улучшает кровообращение.</p>
+                </div>
+            </div>
+
+            <!-- Карточка услуги 2 -->
+            <div class="service-card" onclick="openRegistrationModal()">
+                <img src="images/facial.jpg" alt="Уход за лицом">
+                <div class="service-overlay">
+                    <h3>Уход за лицом</h3>
+                    <p>Профессиональные процедуры для здоровья и сияния кожи.</p>
+                </div>
+            </div>
+
+            <!-- Карточка услуги 3 -->
+            <div class="service-card" onclick="openRegistrationModal()">
+                <img src="images/spa.jpg" alt="СПА-процедуры">
+                <div class="service-overlay">
+                    <h3>СПА-процедуры</h3>
+                    <p>Полное расслабление и восстановление жизненных сил.</p>
+                </div>
+            </div>
+        </div>
+
+        
+    </section>
+
+    <!-- Секция "О нашем клубе" -->
+<section id="about" class="about-container">
+    <h2>О нашем клубе</h2>
+    <p>
+        Добро пожаловать в Спа-салон "Князев" — уникальное место в Туле, где вы можете полностью расслабиться и восстановить свои силы.
+        Роскошный дизайн, высококлассное обслуживание и широкий спектр процедур сделают ваш отдых незабываемым.
+    </p>
+    <p>
+        Наш салон создан для современных женщин, которые заботятся о своем здоровье, красоте и внутреннем равновесии. Мы предлагаем
+        процедуры, направленные на расслабление, омоложение и повышение общего тонуса организма.
+    </p>
+</section>
+
+<!-- Секция отзывов -->
+<section id="reviews" class="reviews-container">
+    <h2>Отзывы наших клиентов</h2>
+    <div class="reviews-grid">
+        <!-- Отзыв 1 -->
+        <div class="review-card">
+            <img src="images/client1.jpg" alt="Клиент 1">
+            <div class="review-content">
+                <p class="review-text">"Лучший спа-салон, в котором я когда-либо была! Великолепный сервис и профессиональные мастера!"</p>
+                <p class="review-author">Марина, Москва</p>
+                <p class="review-rating">⭐⭐⭐⭐⭐</p>
+
+            </div>
+        </div>
+
+        <!-- Отзыв 2 -->
+        <div class="review-card">
+            <img src="images/client2.jpg" alt="Клиент 2">
+            <div class="review-content">
+                <p class="review-text">"Потрясающая атмосфера и уюта, а также невероятно расслабляющие процедуры! Рекомендую всем!"</p>
+                <p class="review-author">Елена, Тула</p>
+                <p class="review-rating">⭐⭐⭐⭐⭐</p>
+
+            </div>
+        </div>
+
+        <!-- Отзыв 3 -->
+        <div class="review-card">
+            <img src="images/client3.jpg" alt="Клиент 3">
+            <div class="review-content">
+                <p class="review-text">"Каждый раз после посещения чувствую себя как заново родившийся. Здесь действительно заботятся о вашем комфорте!"</p>
+                <p class="review-author">Александр, Москва</p>
+                <p class="review-rating">⭐⭐⭐⭐⭐</p>
+
+            </div>
+        </div>
+    </div>
+</section>
+    </main>
+
+    <!-- Подвал -->
+  
+        <footer id="contacts" class="footer">
+            <div class="footer-content">
+       
+            <!-- Логотип -->
+            <div class="footer-logo">
+                <img src="images/logo.png" alt="Логотип Спа-салона">
+            </div>
+    
+            <!-- Контактная информация -->
+            <div class="footer-info">
+                <p>Адрес: Москва, ул. Примерная, 12</p>
+                <p>Телефон: <a href="tel:+79056241795">+7 (905) 624-17-95</a></p>
+                <p>Email: <a href="mailto:info@spa-salon.ru">info@spa-salon.ru</a></p>
+            </div>
+    
+            <!-- Социальные сети -->
+            <div class="footer-social">
+                <a href="https://www.instagram.com" target="_blank">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a href="https://www.telegram.org" target="_blank">
+                    <i class="fab fa-telegram-plane"></i>
+                </a>
+                <a href="https://vk.com/beheritv" target="_blank">
+                    <i class="fab fa-vk"></i>
+                </a>
+            </div>
+        </div>
+        <p class="footer-copyright">&copy; 2024 Спа-салон "Князев". Все права защищены.</p>
+    </footer>
+    
+    <script src="scripts/script.js" defer></script>
+
+</body>
+</html>
