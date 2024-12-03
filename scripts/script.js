@@ -68,9 +68,13 @@ function closeRegistrationModal() {
 }
 
 
-// Обработка отправки формы через fetch
+let isSubmitting = false; // Флаг для отслеживания отправки
+
 document.getElementById('registrationForm').addEventListener('submit', function (e) {
-    e.preventDefault(); // Останавливаем стандартное поведение формы (перезагрузку страницы)
+    e.preventDefault(); // Останавливаем стандартное поведение формы
+
+    if (isSubmitting) return; // Если форма уже отправляется, выходим
+    isSubmitting = true; // Устанавливаем флаг в true
 
     const formData = {
         name: document.getElementById('name').value,
@@ -84,12 +88,12 @@ document.getElementById('registrationForm').addEventListener('submit', function 
         headers: {
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify(formData) // Преобразуем данные формы в JSON
+        body: JSON.stringify(formData)
     })
     .then(response => {
         if (response.ok) {
             alert('Регистрация успешна!');
-            closeRegistrationModal(); // Закрываем модальное окно после успешной регистрации
+            closeRegistrationModal(); // Закрываем модальное окно
         } else {
             alert('Ошибка регистрации.');
         }
@@ -97,8 +101,12 @@ document.getElementById('registrationForm').addEventListener('submit', function 
     .catch(error => {
         alert('Ошибка отправки данных!');
         console.error('Ошибка:', error);
+    })
+    .finally(() => {
+        isSubmitting = false; // Разблокировка формы после завершения запроса
     });
 });
+
 
 
 
