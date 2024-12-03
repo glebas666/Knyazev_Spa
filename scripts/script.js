@@ -99,7 +99,7 @@ document.getElementById('registrationForm').addEventListener('submit', function 
         }
     })
     .catch(error => {
-        alert('Мы скоро с вами свяжемся!');
+        alert('Ошибка отправки данных!');
         console.error('Ошибка:', error);
     })
     .finally(() => {
