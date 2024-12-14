@@ -6,16 +6,19 @@
     <title>Спа-салон</title>
     <link rel="stylesheet" href="styles/style.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css">
-</head>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poiret+One&display=swap" rel="stylesheet">
+
 </head>
 <body>
-
+   
    <!-- Боковая панель навигации -->
 <div id="sidebar" class="sidebar">
     <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
     <a href="#about">О салоне</a>
     <a href="#services">Услуги</a>
-    <a href="#reviews">Отзывы</a>
+    <a href="#masters">Наши мастера</a>
     <a href="#contacts">Контакты</a> <!-- Якорная ссылка -->
 </div>
 
@@ -30,7 +33,7 @@
         </div>
         <div class="social-icons">
             <a href="https://www.instagram.com" target="_blank" class="social-icon"><i class="fab fa-instagram"></i></a>
-            <a href="https://t.me" target="_blank" class="social-icon"><i class="fab fa-telegram-plane"></i></a>
+            <a href="https://t.me/pavukicc" target="_blank" class="social-icon"><i class="fab fa-telegram-plane"></i></a>
             <a href="https://vk.com/beheritv" target="_blank" class="social-icon"><i class="fab fa-vk"></i></a>
         </div>
     </header>
@@ -52,24 +55,24 @@
         </div>
     </div>
 </div>
-                <!-- Слайд 2 -->
-                <div class="slide">
-                    <img src="images/photo2.jpg" alt="Слайд 2">
-                    <div class="slider-content">
-                        <div class="logo-center">
-                            <img src="images/logo.png" alt="Логотип Спа-салона">
-                        </div>
-                        <div class="motto-center">
-                            <h2>Не упустите свой шанс на полное восстановление!</h2>
-                            <p class="quote">"Настоящее счастье можно найти только внутри себя." – Буда</p>
-                        </div>
-                        <div class="slider-buttons">
-                            <a href="#booking" class="button" onclick="openRegistrationModal()">Записаться</a>
-                            <a href="#services" class="button">Услуги</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
+ <!-- Слайд 2 -->
+ <div class="slide">
+    <img src="images/photo2.jpg" alt="Слайд 2">
+    <div class="slider-content">
+        <div class="logo-center">
+            <img src="images/logo.png" alt="Логотип Спа-салона">
+        </div>
+        <div class="motto-center">
+            <h2>Не упустите свой шанс на полное восстановление!</h2>
+            <p class="quote">"Настоящее счастье можно найти только внутри себя." – Буда</p>
+        </div>
+        <div class="slider-buttons">
+            <a href="#booking" class="button" onclick="openRegistrationModal()">Записаться</a>
+            <a href="#services" class="button">Услуги</a>
+        </div>
+    </div>
+</div>
+</div>
             <!-- Стрелки и индикаторы -->
             <button class="prev" onclick="prevSlide()">&#10094;</button>
             <button class="next" onclick="nextSlide()">&#10095;</button>
@@ -78,10 +81,6 @@
                 <span onclick="setSlide(1)" class="indicator"></span>
             </div>
         </section>
-
-<!-- Кнопка для перехода к регистрации -->
-<button class="button" onclick="openRegistrationModal()">Записаться</button>
-
 
 <!-- Модальное окно регистрации -->
 <div id="registrationModal" class="modal">
@@ -104,10 +103,10 @@
 </div>
 
 
-
         <!-- Секция услуг -->
     <section id="services" class="services-container">
         <h2>Наши услуги</h2>
+        
         <div class="services-grid">
             <!-- Карточка услуги 1 -->
             <div class="service-card" onclick="openRegistrationModal()">
@@ -135,9 +134,88 @@
                     <p>Полное расслабление и восстановление жизненных сил.</p>
                 </div>
             </div>
+
+            <!-- Карточка услуги 4 -->
+            <div class="service-card" onclick="openRegistrationModal()">
+            <img src="images/yoga.jpg" alt="Йога">
+            <div class="service-overlay">
+                <h3>Йога</h3>
+                <p>Улучшение гибкости и внутренней гармонии.</p>
+            </div>
         </div>
 
-        
+        <!-- Карточка услуги 5 -->
+        <div class="service-card" onclick="openRegistrationModal()">
+            <img src="images/sauna.jpg" alt="Сауна">
+            <div class="service-overlay">
+                <h3>Сауна</h3>
+                <p>Очищение и восстановление после напряженного дня.</p>
+            </div>
+        </div>
+
+        <!-- Карточка услуги 6 -->
+        <div class="service-card" onclick="openRegistrationModal()">
+            <img src="images/aromatherapy.jpg" alt="Ароматерапия">
+            <div class="service-overlay">
+                <h3>Ароматерапия</h3>
+                <p>Расслабление с помощью натуральных эфирных масел.</p>
+            </div>
+        </div>
+
+        <!-- Карточка услуги 7 -->
+        <div class="service-card" onclick="openRegistrationModal()">
+            <img src="images/couple-massage.jpg" alt="Массаж для пар">
+            <div class="service-overlay">
+                <h3>Массаж для пар</h3>
+                <p>Романтическая процедура для пар, которая способствует расслаблению и гармонии.</p>
+            </div>
+        </div>
+
+        <!-- Карточка услуги 8 -->
+<div class="service-card" onclick="openRegistrationModal()">
+    <img src="images/hydrotherapy.jpg" alt="Гидротерапия">
+    <div class="service-overlay">
+        <h3>Гидротерапия</h3>
+        <p>Восстановление организма с помощью целебной силы воды.</p>
+    </div>
+</div>
+
+<!-- Карточка услуги 9 -->
+<div class="service-card" onclick="openRegistrationModal()">
+    <img src="images/hot-stone-massage.jpg" alt="Массаж горячими камнями">
+    <div class="service-overlay">
+        <h3>Массаж горячими камнями</h3>
+        <p>Глубокое расслабление и снятие мышечного напряжения.</p>
+    </div>
+</div>
+
+<!-- Карточка услуги 10 -->
+<div class="service-card" onclick="openRegistrationModal()">
+    <img src="images/detox.jpg" alt="Детокс-программа">
+    <div class="service-overlay">
+        <h3>Детокс-программа</h3>
+        <p>Комплекс процедур для очищения и омоложения организма.</p>
+    </div>
+</div>
+
+<!-- Карточка услуги 11 -->
+<div class="service-card" onclick="openRegistrationModal()">
+    <img src="images/reflexology.jpg" alt="Рефлексология">
+    <div class="service-overlay">
+        <h3>Рефлексология</h3>
+        <p>Воздействие на биологически активные точки для восстановления энергии.</p>
+    </div>
+</div>
+
+<!-- Карточка услуги 12 -->
+<div class="service-card" onclick="openRegistrationModal()">
+    <img src="images/body-wrap.jpg" alt="Обёртывания">
+    <div class="service-overlay">
+        <h3>Обёртывания</h3>
+        <p>Питание и увлажнение кожи с использованием натуральных компонентов.</p>
+    </div>
+</div>
+        </div>
     </section>
 
     <!-- Секция "О нашем клубе" -->
@@ -153,44 +231,53 @@
     </p>
 </section>
 
-<!-- Секция отзывов -->
-<section id="reviews" class="reviews-container">
-    <h2>Отзывы наших клиентов</h2>
-    <div class="reviews-grid">
-        <!-- Отзыв 1 -->
-        <div class="review-card">
-            <img src="images/client1.jpg" alt="Клиент 1">
-            <div class="review-content">
-                <p class="review-text">"Лучший спа-салон, в котором я когда-либо была! Великолепный сервис и профессиональные мастера!"</p>
-                <p class="review-author">Марина, Москва</p>
-                <p class="review-rating">⭐⭐⭐⭐⭐</p>
-
+<!-- Секция "Наши мастера" -->
+<section id="masters" class="masters-container">
+    <h2>Наши мастера</h2>
+    <div class="masters-grid">
+        <!-- Мастер 1 -->
+        <div class="master-card">
+            <img src="images/master1.jpg" alt="Мастер 1">
+            <div class="master-overlay">
+                <h3>Ирина Петрова</h3>
+                <p>Опыт: 8 лет</p>
+                <p>Профессиональный массажист. Специализируется на классическом и расслабляющем массаже.</p>
             </div>
         </div>
 
-        <!-- Отзыв 2 -->
-        <div class="review-card">
-            <img src="images/client2.jpg" alt="Клиент 2">
-            <div class="review-content">
-                <p class="review-text">"Потрясающая атмосфера и уюта, а также невероятно расслабляющие процедуры! Рекомендую всем!"</p>
-                <p class="review-author">Елена, Тула</p>
-                <p class="review-rating">⭐⭐⭐⭐⭐</p>
-
+        <!-- Мастер 2 -->
+        <div class="master-card">
+            <img src="images/master2.jpg" alt="Мастер 2">
+            <div class="master-overlay">
+                <h3>Алексей Смирнов</h3>
+                <p>Опыт: 5 лет</p>
+                <p>Специалист по СПА-процедурам и уходу за телом. Создает атмосферу уюта и расслабления.</p>
             </div>
         </div>
 
-        <!-- Отзыв 3 -->
-        <div class="review-card">
-            <img src="images/client3.jpg" alt="Клиент 3">
-            <div class="review-content">
-                <p class="review-text">"Каждый раз после посещения чувствую себя как заново родившийся. Здесь действительно заботятся о вашем комфорте!"</p>
-                <p class="review-author">Александр, Москва</p>
-                <p class="review-rating">⭐⭐⭐⭐⭐</p>
+        <!-- Мастер 3 -->
+        <div class="master-card">
+            <img src="images/master3.jpg" alt="Мастер 3">
+            <div class="master-overlay">
+                <h3>Мария Иванова</h3>
+                <p>Опыт: 6 лет</p>
+                <p>Косметолог. Помогает достичь эффекта сияющей кожи и омоложения.</p>
+            </div>
+        </div>
 
+        <!-- Мастер 4 -->
+        <div class="master-card">
+            <img src="images/master4.jpg" alt="Мастер 4">
+            <div class="master-overlay">
+                <h3>Елена Белова</h3>
+                <p>Опыт: 4 года</p>
+                <p>Мастер по уходу за волосами. Создает прически для любого случая и выполняет процедуры восстановления волос.</p>
             </div>
         </div>
     </div>
 </section>
+
+
     </main>
 
     <!-- Подвал -->
@@ -215,7 +302,7 @@
                 <a href="https://www.instagram.com" target="_blank">
                     <i class="fab fa-instagram"></i>
                 </a>
-                <a href="https://www.telegram.org" target="_blank">
+                <a href="https://t.me/pavukicc" target="_blank">
                     <i class="fab fa-telegram-plane"></i>
                 </a>
                 <a href="https://vk.com/beheritv" target="_blank">
