@@ -1,8 +1,9 @@
 /* Основные стили */
 body {
-    font-family: 'Playfair Display', serif;  
+    font-family: 'Oswald', serif;  
     margin: 0;
     padding: 0;
+    
 }
 
 html {
@@ -80,11 +81,11 @@ header {
 /* Слайдер -------------------------------*/
 
 .slider-container {
+    font-family: 'Poiret One', sans-serif;
     position: relative;
     width: 100%;
     height: 900px;
     overflow: hidden;
-    
 }
 
 .slides {
@@ -140,9 +141,25 @@ header {
 }
 
 .logo-center img {
-    width: 300px;
+    width: 300px; /* Стандартный размер */
+    max-width: 100%; /* Логотип не выходит за пределы контейнера */
+    height: auto; /* Сохраняет пропорции */
     margin-bottom: 20px;
 }
+
+/* Адаптивность для мобильных устройств */
+@media (max-width: 768px) {
+    .logo-center img {
+        width: 200px; /* Уменьшаем размер логотипа на устройствах с шириной экрана до 768px */
+    }
+}
+
+@media (max-width: 480px) {
+    .logo-center img {
+        width: 150px; /* Еще меньше для маленьких экранов (например, телефонов) */
+    }
+}
+
 
 .motto-center h2 {
     font-size: 48px;
@@ -161,7 +178,6 @@ header {
 }
 
 .button {
-    
     background-color: transparent; /* Прозрачный фон */
     color: #ffffff; /* Цвет текста */
     border: 2px solid #ffffff; /* Рамка вокруг текста */
@@ -200,10 +216,72 @@ header {
     background-color: #ffffffa7;
 }
 
+/* Адаптация для текста в слайдере */
+@media (max-width: 768px) {
+    .slider-text {
+        font-size: 20px; /* Уменьшение размера текста */
+        top: 5%; /* Перемещение текста выше */
+        left: 5%;
+        padding: 10px; /* Меньшие отступы */
+        width: 90%; /* Ограничение ширины текста */
+    }
+
+    .slider-buttons {
+        bottom: 10%; /* Поднятие кнопок */
+        flex-direction: column; /* Вертикальное выравнивание кнопок */
+        gap: 10px; /* Отступ между кнопками */
+    }
+
+    .button {
+        font-size: 1em;
+        padding: 8px 16px;
+    }
+
+    .indicators {
+        bottom: 5%; /* Перемещение индикаторов ниже */
+    }
+
+    .indicators span {
+        width: 12px;
+        height: 12px;
+    }
+
+    .slide img {
+        height: auto;
+    }
+    
+}
+
+/* Адаптация для очень маленьких экранов */
+@media (max-width: 480px) {
+    .slider-text {
+        font-size: 16px; /* Еще меньше текста */
+        top: 3%;
+        left: 5%;
+        padding: 5px;
+        width: 90%;
+    }
+
+    .slider-buttons {
+        bottom: 8%;
+    }
+
+    .indicators {
+        bottom: 3%;
+    }
+
+    .indicators span {
+        width: 10px;
+        height: 10px; /* Уменьшение размера индикаторов */
+    }
+}
+
+
 /* Секция услуг */
 .services-container {
-    padding: 50px 20px;
-    background-color: #f9f9f9;
+    font-family: 'Poiret One', sans-serif;
+    padding: 40px 20px;
+    background-color: #f4f4f4;
     text-align: center;
 }
 
@@ -212,44 +290,54 @@ header {
     margin-bottom: 30px;
 }
 
+/* Сетка карточек */
 .services-grid {
-    display: flex;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 20px;
-    justify-content: center;
+    justify-items: center;
 }
 
+/* Карточка услуги */
 .service-card {
     position: relative;
-    width: 300px;
+    width: 100%; /* Занимает всю ширину колонки */
     height: 400px;
     overflow: hidden;
-    border-radius: 10px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease;
+    border-radius: 0px;
+    transition: transform 0.3s ease, background-color 0.3s ease; /* Плавный переход для эффекта */
 }
 
 .service-card:hover {
     transform: scale(1.05);
+    background-color: rgba(0, 0, 0, 0.4); /* Затемнение фона */
 }
 
 .service-card img {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1; /* Помещаем изображение под текст */
+    transition: filter 0.3s ease; /* Плавное затемнение изображения */
+}
+
+.service-card:hover img {
+    filter: brightness(0.6); /* Затемняем изображение */
 }
 
 /* Оверлей с текстом */
 .service-overlay {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    padding: 20px;
+    position: absolute; /* Абсолютное позиционирование для размещения в углу */
+    bottom: 10px; /* Отступ от нижнего края */
+    left: 10px; /* Отступ от левого края */
+    z-index: 2; /* Текст поверх изображения */
     color: white;
-    background: rgba(0, 0, 0, 0.6);
-    text-align: center;
-    transition: background 0.3s ease;
+    text-align: left; /* Текст выравнивается по левому краю */
+    padding: 20px;
+    pointer-events: none; /* Текст не блокирует наведение */
 }
 
 .service-overlay h3 {
@@ -261,14 +349,9 @@ header {
     font-size: 1em;
 }
 
-/* Анимация появления текста */
-.service-card:hover .service-overlay {
-    background: rgba(0, 0, 0, 0.8);
-}
-
 /* Секция "О нашем клубе" */
 .about-container {
-    padding: 50px 20px; /* Отступы сверху и по бокам */
+    padding: 40px 20px; /* Отступы сверху и по бокам */
     background-color: #ffffff; /* Цвет фона */
     text-align: center; /* Центрирование текста */
     max-width: 800px; /* Максимальная ширина секции */
@@ -281,6 +364,7 @@ header {
 }
 
 .about-container h2 {
+    font-family: 'Poiret One', sans-serif;
     font-size: 2.5em;
     margin-bottom: 20px;
     color: #333;
@@ -296,7 +380,7 @@ header {
 /* Стили для социальной панели */
 .social-icons {
     position: absolute;
-    top: 35px; /* Отступ от верхнего края */
+    top: 30px; /* Отступ от верхнего края */
     left: 70px; /* Отступ от правого края */
     display: flex;
     gap: 30px; /* Расстояние между иконками */
@@ -315,6 +399,7 @@ header {
  
 /* Футер */
 .footer {
+    font-family: 'Poiret One', sans-serif;
     background-color: #333; /* Тёмный фон */
     color: white; /* Белый текст */
     padding: 40px 0;
@@ -386,6 +471,7 @@ header {
 
 /* Стили для модального окна */
 .modal {
+    font-family: 'Poiret One', sans-serif;
     display: none; /* Скрыто по умолчанию */
     position: fixed;
     z-index: 10;
@@ -471,6 +557,7 @@ header {
 
 /* Кнопка отправки */
 .submit-button {
+    font-family: 'Poiret One', sans-serif;
     background-color: #f4a261;
     color: white;
     padding: 12px 20px;
@@ -487,62 +574,108 @@ header {
     background-color: #e17b42;
 }
 
+/* Заголовок раздела */
+.masters-container h2 {
+    font-size: 36px;
+    margin-bottom: 30px;
+    color: #333;
+}
 
-/* Контейнер отзывов */
-.reviews-container {
+/* Контейнер мастеров */
+.masters-container {
+    font-family: 'Poiret One', sans-serif;
     padding: 50px 0;
     background-color: #f4f4f4;
     text-align: center;
 }
 
 /* Заголовок раздела */
-.reviews-container h2 {
+.masters-container h2 {
     font-size: 36px;
     margin-bottom: 30px;
     color: #333;
 }
 
-/* Сетка отзывов */
-.reviews-grid {
+/* Сетка мастеров */
+.masters-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 20px;
+    grid-template-columns: repeat(4, 1fr); /* 4 колонки для больших экранов */
+    gap: 10px; /* Промежуток между карточками */
     justify-items: center;
+    align-items: stretch; /* Растягиваем карточки по высоте */
 }
 
-/* Карточка отзыва */
-.review-card {
+/* Карточка мастера */
+.master-card {
+    position: relative;
     background-color: #fff;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     overflow: hidden;
-    width: 300px;
-    padding: 20px;
-    text-align: center;
+    width: 100%;
+    max-width: 300px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+    display: flex; /* Используем flex для растягивания контента */
+    flex-direction: column; /* Располагаем элементы вертикально */
 }
 
-/* Изображение клиента */
-.review-card img {
-    border-radius: 50%;
-    width: 80px;
-    height: 80px;
+/* Фотография мастера */
+.master-card img {
+    width: 100%;
+    height: 400px;
     object-fit: cover;
-    margin-bottom: 15px;
+    transition: transform 0.3s ease;
 }
 
-/* Текст отзыва */
-.review-text {
-    font-style: italic;
-    font-size: 16px;
-    color: #555;
+/* Наложение с информацией */
+.master-overlay {
+    position: absolute;
+    bottom: -100%; /* Начальное положение — скрыто */
+    left: 0;
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0.726);
+    color: rgb(0, 0, 0);
+    padding: 20px;
+    transition: bottom 0.5s ease; /* Плавное появление */
+    text-align: left; /* Выравнивание текста по левому краю */
+}
+
+/* Название и описание мастера */
+.master-overlay h3 {
+    font-size: 20px;
     margin-bottom: 10px;
-}
-
-/* Автор отзыва */
-.review-author {
     font-weight: bold;
-    font-size: 14px;
-    color: #333;
 }
 
+.master-overlay p {
+    font-size: 14px;
+}
+
+/* Эффект при наведении */
+.master-card:hover {
+    transform: translateY(-10px);
+}
+
+.master-card:hover .master-overlay {
+    bottom: 0; /* Показываем информацию снизу при наведении */
+}
+
+/* Адаптивность для мобильных устройств */
+@media (max-width: 1024px) {
+    .masters-grid {
+        grid-template-columns: repeat(2, 1fr); /* 2 колонки для экранов от 768px до 1024px */
+    }
+}
+
+@media (max-width: 768px) {
+    .masters-grid {
+        grid-template-columns: 1fr; /* 1 колонка для экранов меньше 768px */
+    }
+
+    .master-card {
+        width: 90%; /* Уменьшаем размер карточки мастера */
+    }
+
+    .masters-container h2 {
+        font-size: 30px; /* Уменьшаем размер заголовка */
+    }
+}
