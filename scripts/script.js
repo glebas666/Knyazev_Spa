@@ -68,13 +68,9 @@ function closeRegistrationModal() {
 }
 
 
-let isSubmitting = false; // Флаг для отслеживания отправки
-
+// Обработка отправки формы через fetch
 document.getElementById('registrationForm').addEventListener('submit', function (e) {
-    e.preventDefault(); // Останавливаем стандартное поведение формы
-
-    if (isSubmitting) return; // Если форма уже отправляется, выходим
-    isSubmitting = true; // Устанавливаем флаг в true
+    e.preventDefault(); // Останавливаем стандартное поведение формы (перезагрузку страницы)
 
     const formData = {
         name: document.getElementById('name').value,
@@ -88,12 +84,12 @@ document.getElementById('registrationForm').addEventListener('submit', function 
         headers: {
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify(formData)
+        body: JSON.stringify(formData) // Преобразуем данные формы в JSON
     })
     .then(response => {
         if (response.ok) {
             alert('Регистрация успешна!');
-            closeRegistrationModal(); // Закрываем модальное окно
+            closeRegistrationModal(); // Закрываем модальное окно после успешной регистрации
         } else {
             alert('Ошибка регистрации.');
         }
@@ -101,14 +97,27 @@ document.getElementById('registrationForm').addEventListener('submit', function 
     .catch(error => {
         alert('Ошибка отправки данных!');
         console.error('Ошибка:', error);
-    })
-    .finally(() => {
-        isSubmitting = false; // Разблокировка формы после завершения запроса
     });
 });
 
 
+// Получаем элемент кнопки
+const scrollToTopBtn = document.getElementById('scrollToTopBtn');
 
+// Функция для отображения кнопки при прокрутке
+window.onscroll = function() {
+    if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
+        scrollToTopBtn.classList.add('show'); // Показать кнопку
+    } else {
+        scrollToTopBtn.classList.remove('show'); // Скрыть кнопку
+    }
+};
+
+// Функция прокрутки страницы вверх
+scrollToTopBtn.addEventListener('click', function(e) {
+    e.preventDefault();
+    window.scrollTo({ top: 0, behavior: 'smooth' }); // Плавная прокрутка в начало страницы
+});
 
 
 // Инициализация слайдера
