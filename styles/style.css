@@ -147,16 +147,41 @@ header {
     margin-bottom: 20px;
 }
 
-/* Адаптивность для мобильных устройств */
+/* Скрыть слайдер и все его элементы на мобильных устройствах */
 @media (max-width: 768px) {
-    .logo-center img {
-        width: 200px; /* Уменьшаем размер логотипа на устройствах с шириной экрана до 768px */
+    .slider-container {
+        display: none; /* Скрыть слайдер */
+    }
+
+    .slider-buttons {
+        display: none; /* Скрыть кнопки слайдера */
+    }
+
+    .indicators {
+        display: none; /* Скрыть индикаторы слайдера */
+    }
+
+    .slider-text {
+        display: none; /* Скрыть текст слайдера */
     }
 }
 
+/* Скрыть слайдер и его элементы на мобильных устройствах (до 480px) */
 @media (max-width: 480px) {
-    .logo-center img {
-        width: 150px; /* Еще меньше для маленьких экранов (например, телефонов) */
+    .slider-container {
+        display: none; /* Скрыть слайдер */
+    }
+
+    .slider-buttons {
+        display: none; /* Скрыть кнопки */
+    }
+
+    .indicators {
+        display: none; /* Скрыть индикаторы */
+    }
+
+    .slider-text {
+        display: none; /* Скрыть текст */
     }
 }
 
@@ -216,71 +241,11 @@ header {
     background-color: #ffffffa7;
 }
 
-/* Адаптация для текста в слайдере */
-@media (max-width: 768px) {
-    .slider-text {
-        font-size: 20px; /* Уменьшение размера текста */
-        top: 5%; /* Перемещение текста выше */
-        left: 5%;
-        padding: 10px; /* Меньшие отступы */
-        width: 90%; /* Ограничение ширины текста */
-    }
-
-    .slider-buttons {
-        bottom: 10%; /* Поднятие кнопок */
-        flex-direction: column; /* Вертикальное выравнивание кнопок */
-        gap: 10px; /* Отступ между кнопками */
-    }
-
-    .button {
-        font-size: 1em;
-        padding: 8px 16px;
-    }
-
-    .indicators {
-        bottom: 5%; /* Перемещение индикаторов ниже */
-    }
-
-    .indicators span {
-        width: 12px;
-        height: 12px;
-    }
-
-    .slide img {
-        height: auto;
-    }
-    
-}
-
-/* Адаптация для очень маленьких экранов */
-@media (max-width: 480px) {
-    .slider-text {
-        font-size: 16px; /* Еще меньше текста */
-        top: 3%;
-        left: 5%;
-        padding: 5px;
-        width: 90%;
-    }
-
-    .slider-buttons {
-        bottom: 8%;
-    }
-
-    .indicators {
-        bottom: 3%;
-    }
-
-    .indicators span {
-        width: 10px;
-        height: 10px; /* Уменьшение размера индикаторов */
-    }
-}
-
 
 /* Секция услуг */
 .services-container {
     font-family: 'Poiret One', sans-serif;
-    padding: 40px 20px;
+    padding: 80px 20px;
     background-color: #f4f4f4;
     text-align: center;
 }
@@ -363,7 +328,7 @@ header {
     z-index: 1; /* Текст будет поверх фона */
 }
 
-.about-container h2 {
+.about-container h2 { 
     font-family: 'Poiret One', sans-serif;
     font-size: 2.5em;
     margin-bottom: 20px;
@@ -678,4 +643,42 @@ header {
     .masters-container h2 {
         font-size: 30px; /* Уменьшаем размер заголовка */
     }
+}
+
+/* Стиль для кнопки подъема наверх */
+.scroll-to-top {
+    position: fixed;
+    bottom: 20px;  /* Отступ снизу */
+    right: 20px;   /* Отступ справа */
+    background-color: #f4a261; /* Цвет фона кнопки */
+    color: white; /* Цвет текста */
+    border: none;
+    border-radius: 50%; /* Круглая форма */
+    padding: 15px; /* Размер кнопки */
+    width: 40px;  /* Ширина кнопки */
+    height: 40px; /* Высота кнопки */
+    display: flex; /* Используем flexbox для центрирования */
+    justify-content: center; /* Центрируем содержимое по горизонтали */
+    align-items: center; /* Центрируем содержимое по вертикали */
+    font-size: 24px; /* Размер иконки */
+    cursor: pointer;
+    transition: all 0.3s ease; /* Плавный переход */
+    display: none; /* Изначально скрыта */
+    z-index: 9999; /* Убедимся, что кнопка всегда поверх других элементов */
+    text-decoration: none; 
+}
+
+/* Эффект при наведении */
+.scroll-to-top:hover {
+    background-color: #e59554; /* Изменение фона при наведении */
+}
+
+/* Иконка стрелки */
+.scroll-to-top i {
+    font-size: 24px; /* Размер иконки */
+}
+
+/* Показать кнопку при прокрутке страницы */
+.scroll-to-top.show {
+    display: flex;
 }
